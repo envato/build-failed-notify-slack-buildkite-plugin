@@ -2,31 +2,15 @@
 
 set -euo pipefail
 
-mapping_file="$BUILDKITE_PLUGIN_BUILD_FAILED_NOTIFY_SLACK_MAPPING_FILE"
+DIR="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
 
-if [[ $BUILDKITE_PLUGIN_BUILD_FAILED_NOTIFY_SLACK_MAPPING_FILE == s3://* ]] ;then
-  tmp_file=$(mktemp)
-  aws s3 cp "$BUILDKITE_PLUGIN_BUILD_FAILED_NOTIFY_SLACK_MAPPING_FILE" "$tmp_file" &> /dev/null
-  mapping_file="$tmp_file"
-fi
+# shellcheck source=lib/pipeline.bash
+source "$DIR/../lib/pipeline.bash"
 
-email="$BUILDKITE_BUILD_CREATOR_EMAIL"
-creator="$BUILDKITE_BUILD_CREATOR"
-branch="$BUILDKITE_BRANCH"
+echo "~~~ Contents of notify pipeline"
 
-if [[ -f "$mapping_file" ]]; then
-  slackId=$(cat "$mapping_file" | jq -r ".[] | select(.email==\"$email\").slack")
-fi
+pipeline
 
-if [[ -n "${slackId-}" ]]; then
-  creator="<@${slackId-}>"
-fi
+echo "+++ Uploading notify pipeline"
 
-echo "steps: []"
-echo
-echo "notify:"
-echo "  - slack:"
-echo "      channels:"
-echo "        - \"$BUILDKITE_PLUGIN_BUILD_FAILED_NOTIFY_SLACK_CHANNEL\""
-echo "      message: \"The most recent \`$branch\` branch build by $creator has failed, please take a look.\""
-echo "    if: build.state == \"failed\""
+pipeline | buildkite-agent pipeline upload

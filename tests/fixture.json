@@ -1,10 +1,10 @@
 [
   {
     "email": "me@example.com",
-    "slack": "U1234"
+    "slackId": "U1234"
   },
   {
     "email": "other@example.com",
-    "slack": "U5678"
+    "slackId": "U5678"
   }
 ]
