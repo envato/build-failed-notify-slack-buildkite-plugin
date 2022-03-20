@@ -1,0 +1,15 @@
+name: Build Failed Notify Slack Buildkite Plugin
+description: "@'s the creator of the failed build via a mapping file"
+author: https://github.com/envato/build-failed-notify-slack-buildkite-plugi
+requirements:
+  - jq
+configuration:
+  properties:
+    mapping_file:
+      type: string
+    channel:
+      type: string
+  required:
+    - mapping_file
+    - channel
+  additionalProperties: false

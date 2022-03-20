@@ -1,0 +1,11 @@
+services:
+  lint:
+    image: buildkite/plugin-linter
+    command: ["--id", "envato/build-failed-notify-slack"]
+    volumes:
+      - ".:/plugin:ro"
+
+  tests:
+    image: buildkite/plugin-tester
+    volumes:
+      - ".:/plugin:ro"
