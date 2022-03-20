@@ -9,6 +9,7 @@ Add the following to your `pipeline.yml`:
 ```yml
 steps:
   - label: ":slack: Notify on fail"
+    if: build.branch == "main"
     plugins:
       - envato/build-failed-notify-slack#v1.0.0:
           mapping_file: slack_users.json
@@ -20,6 +21,7 @@ Mapping files can be downloaded from s3
 ```yml
 steps:
   - label: ":slack: Notify on fail"
+    if: build.branch == "main"
     plugins:
       - cultureamp/aws-assume-role#v0.2.0:
           role: "arn:aws:iam::123456789012:role/example-role"
