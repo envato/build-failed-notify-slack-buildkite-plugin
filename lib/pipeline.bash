@@ -17,7 +17,7 @@ function pipeline() {
   branch="${BUILDKITE_BRANCH:-main}"
 
   if [[ -f "$mapping_file" ]]; then
-    slackId=$(cat "$mapping_file" | jq -r ".[] | select(.email==\"$email\").slackId")
+    slackId=$(jq -r ".[] | select(.email==\"$email\").slackId" < "$mapping_file")
   fi
 
   if [[ -n "${slackId-}" ]]; then
