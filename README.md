@@ -36,6 +36,21 @@ steps:
 
 JSON file with an array of users slack id's and email addresses (email used in Buildkite, appears as `BUILDKITE_BUILD_CREATOR_EMAIL`)
 
+eg.
+
+```json
+[
+  {
+    "email": "me@example.com",
+    "slackId": "U1234"
+  },
+  {
+    "email": "other@example.com",
+    "slackId": "U5678"
+  }
+]
+```
+
 ### `channel` (Required, string)
 
 Including the hash, a channel in slack.
