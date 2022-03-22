@@ -1,6 +1,8 @@
 # Build Failed Notify Slack Buildkite Plugin
 
-@'s the creator of the failed build via a mapping file
+Buildkite has a notifications feature that can notify channels in slack about build status. The problem is that it's missing a mapping to the build creator's slack ID.
+
+This plugin uses the [notifications feature](https://buildkite.com/docs/pipelines/notifications) and a mapping file to @at the creator of a failed build.
 
 ## Example
 
