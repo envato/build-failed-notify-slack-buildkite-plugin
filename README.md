@@ -13,7 +13,7 @@ steps:
   - label: ":slack: Notify on fail"
     if: build.branch == "main"
     plugins:
-      - envato/build-failed-notify-slack#v1.0.0:
+      - envato/build-failed-notify-slack#v1.1.0:
           mapping_file: slack_users.json
           channel: "#my-channel"
 ```
@@ -27,7 +27,7 @@ steps:
     plugins:
       - cultureamp/aws-assume-role#v0.2.0:
           role: "arn:aws:iam::123456789012:role/example-role"
-      - envato/build-failed-notify-slack#v1.0.0:
+      - envato/build-failed-notify-slack#v1.1.0:
           mapping_file: s3://my-bucket/slack_users.json
           channel: "#my-channel"
 ```
