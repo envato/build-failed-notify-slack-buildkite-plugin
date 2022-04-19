@@ -1,0 +1,12 @@
+[
+  {
+    "email": "me@example.com",
+    "slackId": "U1234",
+    "github": "dev1"
+  },
+  {
+    "email": "other@example.com",
+    "slackId": "U5678",
+    "github": "dev2"
+  }
+]

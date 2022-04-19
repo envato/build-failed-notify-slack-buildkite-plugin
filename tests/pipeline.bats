@@ -55,6 +55,28 @@ EOM
   stub aws
 }
 
+@test "looks up the slackId based on github username in a json file" {
+  export BUILDKITE_PLUGIN_BUILD_FAILED_NOTIFY_SLACK_CHANNEL="#my-channel"
+  export BUILDKITE_PLUGIN_BUILD_FAILED_NOTIFY_SLACK_MAPPING_FILE=tests/fixture2.json
+  export BUILDKITE_BUILD_CREATOR_EMAIL=dev1@users.noreply.github.com
+  export BUILDKITE_BUILD_CREATOR=dev1
+  export BUILDKITE_BRANCH=main
+
+  run pipeline
+
+  assert_success
+  assert_output << EOM
+steps: []
+
+notify:
+  - slack:
+      channels:
+        - "#my-channel"
+      message: "The most recent \`main\` branch build by <@U1234> has failed, please take a look."
+    if: build.state == "failed"
+EOM
+}
+
 @test "can gracefully fail the lookup" {
   export BUILDKITE_PLUGIN_BUILD_FAILED_NOTIFY_SLACK_CHANNEL="#my-channel"
   export BUILDKITE_PLUGIN_BUILD_FAILED_NOTIFY_SLACK_MAPPING_FILE=tests/fixture.json
