@@ -58,7 +58,7 @@ eg.
 Including the hash, a channel in slack. 
 
 > [!NOTE]
-> The slack channel must be configured to receive notifications with the [Buildkite Builds](https://envato.slack.com/marketplace/AN19RS48G-buildkite-builds) Slack app. Ask IT for help enabling the integration.
+> The slack channel must be configured to receive notifications with the [Buildkite Builds](https://slack.com/marketplace/AN19RS48G) Slack app. More support for integrating with Buildkite can be found in their [documentation](https://buildkite.com/docs/pipelines/integrations/other/slack)
 
 ## Developing
 
