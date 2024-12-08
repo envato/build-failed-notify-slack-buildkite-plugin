@@ -55,7 +55,10 @@ eg.
 
 ### `channel` (Required, string)
 
-Including the hash, a channel in slack.
+Including the hash, a channel in slack. 
+
+> [!NOTE]
+> The slack channel must be configured to receive notifications with the [Buildkite Builds](https://envato.slack.com/marketplace/AN19RS48G-buildkite-builds) Slack app. Ask IT for help enabling the integration.
 
 ## Developing
 
