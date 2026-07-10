@@ -8,14 +8,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: tests
-        run: docker run --rm -v "$PWD:/plugin:ro" buildkite/plugin-tester:v3.0.1
+        run: docker compose run --rm tests
   plugin-lint:
     name: Lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: lint
-        run: docker run --rm -v "$PWD:/plugin:ro" buildkite/plugin-linter:latest --id envato/build-failed-notify-slack
+        run: docker compose run --rm lint
   plugin-shellcheck:
     name: Shellcheck
     runs-on: ubuntu-latest
