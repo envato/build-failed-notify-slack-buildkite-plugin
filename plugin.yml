@@ -9,6 +9,8 @@ configuration:
       type: string
     channel:
       type: string
+    notify_on_state_change:
+      type: boolean
   required:
     - mapping_file
     - channel
